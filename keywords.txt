@@ -1,0 +1,24 @@
+#######################################
+# Syntax Coloring Map Servo
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DFRobot_RGBMatrix	KEYWORD1	DFRobot_RGBMatrix
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin	KEYWORD2
+customizeZH	KEYWORD2
+drawPixel	KEYWORD2
+Color333	KEYWORD2
+Color444		KEYWORD2
+Color888	KEYWORD2
+ColorHSV	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
