@@ -3,10 +3,6 @@
  * @brief DFRobot's RGB Matrix
  * @n High Accuracy Ambient Light Sensor
  *
- * @copyright	[DFRobot](http://www.dfrobot.com), 2016
- * @copyright	GNU Lesser General Public License
- *
- * @author [yangyang](971326313@qq.com)
  * @version  V1.0
  * @date  2017-3-22
  */
