@@ -7,9 +7,5 @@ DFRobot's LED MATRIX
  * @n This example Set the volume size and play music snippet.
  * @n [Connection and Diagram](等上架后添加wiki链接)
  *
- * Copyright	[DFRobot](http://www.dfrobot.com), 2016
- * Copyright	GNU Lesser General Public License
- *
- * @author [yangyang](971326313@qq.com)
  * version  V1.0
  * date  2017-03-22
