@@ -9,3 +9,7 @@ DFRobot's LED MATRIX
  *
  * version  V1.0
  * date  2017-03-22
+ 
+ ## About this Driver ##
+ Written by Limor Fried/Ladyada & Phil Burgess/PaintYourDragon for Adafruit Industries.  
+BSD license, all text above must be included in any redistribution

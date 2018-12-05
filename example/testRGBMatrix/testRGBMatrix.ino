@@ -1,3 +1,5 @@
+// By Marc MERLIN <marc_soft@merlins.org>
+// Contains code (c) Adafruit, license BSD
 /*!
  * @file testRGBMatrix.ino
  * @brief DFRobot's RGB Matrix
