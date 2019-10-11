@@ -34,6 +34,11 @@ class DFRobot_RGBMatrix : public Adafruit_GFX {
    *  Parameter 4: y-axis
    *  Parameter 5: color
    */ 	
+  
+  void FM6126_Init();
+  void Write_REG1(int A,int B,int C,int D,int E,int F,unsigned char REG_DATA);
+  void Write_REG2(int A,int B,int C,int D,int E,int F,unsigned char REG_DATA)
+	
   void customizeZH(const uint8_t *arr, uint8_t fontSize, uint8_t x, uint8_t y, uint16_t color);
 
   void
