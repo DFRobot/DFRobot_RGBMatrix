@@ -110,9 +110,217 @@ DFRobot_RGBMatrix::DFRobot_RGBMatrix(
 
 }
 
+void DFRobot_RGBMatrix::FM6126_Init(void)
+{
+  pinMode(CLK,OUTPUT);
+  pinMode(LAT,OUTPUT);
+  pinMode(OE,OUTPUT);
+  pinMode(24,OUTPUT); //R1
+  pinMode(25,OUTPUT); //G1
+  pinMode(26,OUTPUT); //B1
+  pinMode(27,OUTPUT); //R2
+  pinMode(28,OUTPUT); //G2
+  pinMode(29,OUTPUT); //B2
+  
+  int   REG1=0xFFC2;
+  int REG2_R=0x6862;
+  int REG2_G=0x6862;
+  int REG2_B=0x6862;
+  Write_REG1(24,25,26,27,28,29,0xFFC2);
+  Write_REG2(24,25,26,27,28,29,0x6862);
+}
+
+void DFRobot_RGBMatrix::Write_REG1(int A,int B,int C,int D,int E,int F,unsigned char REG_DATA)
+{
+  digitalWrite(CLK, LOW);
+  digitalWrite(LAT, LOW);
+  
+  for(int i=0; i<11; i++)
+  {
+    int DIN = REG_DATA;
+    for(int j=0; j<16; j++)
+    {    
+      if(DIN & 0x8000)
+      {
+        digitalWrite(A, HIGH);
+        digitalWrite(B, HIGH);
+        digitalWrite(C, HIGH);
+        digitalWrite(D, HIGH);
+        digitalWrite(E, HIGH);
+        digitalWrite(F, HIGH);
+      }
+      else
+      {
+        digitalWrite(A, LOW);
+        digitalWrite(B, LOW);
+        digitalWrite(C, LOW);
+        digitalWrite(D, LOW);
+        digitalWrite(E, LOW);
+        digitalWrite(F, LOW); 
+      }
+      digitalWrite(CLK, LOW);
+      digitalWrite(CLK, HIGH);
+      DIN = DIN<<1;
+    }
+  }  
+  
+  int DIN = REG_DATA;
+  
+  for(int i=0; i<5; i++)
+  {    
+    if(DIN & 0x8000)
+    {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(F, HIGH);
+    }
+    else
+    {
+      digitalWrite(A, LOW);
+      digitalWrite(B, LOW);
+      digitalWrite(C, LOW);
+      digitalWrite(D, LOW);
+      digitalWrite(E, LOW);
+      digitalWrite(F, LOW);
+    }
+      
+    digitalWrite(CLK, LOW);
+    digitalWrite(CLK, HIGH);
+    DIN = DIN<<1;
+  }
+
+  digitalWrite(LAT, HIGH);
+
+  for(int i=0; i<11; i++)
+  {        
+    if(DIN & 0x8000)
+    {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(F, HIGH);
+    }
+    else
+    {
+      digitalWrite(A, LOW);
+      digitalWrite(B, LOW);
+      digitalWrite(C, LOW);
+      digitalWrite(D, LOW);
+      digitalWrite(E, LOW);
+      digitalWrite(F, LOW);
+    } 
+      
+    digitalWrite(CLK, LOW);
+    digitalWrite(CLK, HIGH);
+    DIN = DIN<<1;
+  }  
+  digitalWrite(CLK, LOW);
+  digitalWrite(LAT, LOW); 
+}
+
+void DFRobot_RGBMatrix::Write_REG2(int A,int B,int C,int D,int E,int F,unsigned char REG_DATA)
+{
+  digitalWrite(CLK, LOW);
+  digitalWrite(LAT, LOW);
+  
+  for(int i=0; i<11; i++)
+  {
+    int DIN = REG_DATA;
+    for(int j=0; j<16; j++)
+    {    
+      if(DIN & 0x8000)
+      {
+        digitalWrite(A, HIGH);
+        digitalWrite(B, HIGH);
+        digitalWrite(C, HIGH);
+        digitalWrite(D, HIGH);
+        digitalWrite(E, HIGH);
+        digitalWrite(F, HIGH);
+      }
+      else
+      {
+        digitalWrite(A, LOW);
+        digitalWrite(B, LOW);
+        digitalWrite(C, LOW);
+        digitalWrite(D, LOW);
+        digitalWrite(E, LOW);
+        digitalWrite(F, LOW); 
+      }
+      digitalWrite(CLK, LOW);
+      digitalWrite(CLK, HIGH);
+      DIN = DIN<<1;
+    }
+  }  
+  
+  int DIN = REG_DATA;
+  
+  for(int i=0; i<4; i++)
+  {    
+    if(DIN & 0x8000)
+    {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(F, HIGH);
+    }
+    else
+    {
+      digitalWrite(A, LOW);
+      digitalWrite(B, LOW);
+      digitalWrite(C, LOW);
+      digitalWrite(D, LOW);
+      digitalWrite(E, LOW);
+      digitalWrite(F, LOW);
+    }
+      
+    digitalWrite(CLK, LOW);
+    digitalWrite(CLK, HIGH);
+    DIN = DIN<<1;
+  }
+
+  digitalWrite(LAT, HIGH);
+
+  for(int i=0; i<12; i++)
+  {        
+    if(DIN & 0x8000)
+    {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(F, HIGH);
+    }
+    else
+    {
+      digitalWrite(A, LOW);
+      digitalWrite(B, LOW);
+      digitalWrite(C, LOW);
+      digitalWrite(D, LOW);
+      digitalWrite(E, LOW);
+      digitalWrite(F, LOW);
+    } 
+      
+    digitalWrite(CLK, LOW);
+    digitalWrite(CLK, HIGH);
+    DIN = DIN<<1;
+  }  
+  digitalWrite(CLK, LOW);
+  digitalWrite(LAT, LOW); 
+}
+
+
 void DFRobot_RGBMatrix::begin(void)
 {
 
+	FM6126_Init();
 	backindex   = 0;                         // Back buffer
 	buffptr     = matrixbuff[1 - backindex]; // -> front buffer
 	activePanel = this;                      // For interrupt hander
