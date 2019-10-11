@@ -71,6 +71,10 @@ BSD license, all text above must be included in any redistribution.
 
 #define nPlanes 4
 
+int CLK = 11;
+int LAT = 10;
+int OE = 9;
+
 // The fact that the display driver interrupt stuff is tied to the
 // singular Timer1 doesn't really take well to object orientation with
 // multiple DFRobot_RGBMatrix instances.  The solution at present is to
