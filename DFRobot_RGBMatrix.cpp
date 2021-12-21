@@ -600,13 +600,14 @@ void DFRobot_RGBMatrix::drawPixel(int16_t x, int16_t y, uint16_t c)
 	b = (c >>  1) & 0xF; // rrrrrggggggBBBBb
 
 	// Loop counter stuff
-	bit   = 2;
+	bit   = 4;
 	limit = 1 << nPlanes;
 
 	if(y < nRows) {
 		// Data for the upper half of the display is stored in the lower
 		// bits of each byte.
 		ptr = &matrixbuff[backindex][y * WIDTH * (nPlanes - 1) + x]; // Base addr
+		//ptr = &matrixbuff[0][0]; // Base addr
 		// Plane 0 is a tricky case -- its data is spread about,
 		// stored in least two bits not used by the other planes.
 		ptr[WIDTH*2] &= ~B00000011;           // Plane 0 R,G mask out in one op
