@@ -1,32 +1,15 @@
-/*
-RGBmatrixPanel Arduino library for Adafruit 16x32 and 32x32 RGB LED
-matrix panels.  Pick one up at:
-  http://www.adafruit.com/products/420
-  http://www.adafruit.com/products/607
-This version uses a few tricks to achieve better performance and/or
-lower CPU utilization:
-- To control LED brightness, traditional PWM is eschewed in favor of
-  Binary Code Modulation, which operates through a succession of periods
-  each twice the length of the preceeding one (rather than a direct
-  linear count a la PWM).  It's explained well here:
-    http://www.batsocks.co.uk/readme/art_bcm_1.htm
-  I was initially skeptical, but it works exceedingly well in practice!
-  And this uses considerably fewer CPU cycles than software PWM.
-- Although many control pins are software-configurable in the user's
-  code, a couple things are tied to specific PORT registers.  It's just
-  a lot faster this way -- port lookups take time.  Please see the notes
-  later regarding wiring on "alternative" Arduino boards.
-- A tiny bit of inline assembly language is used in the most speed-
-  critical section.  The C++ compiler wasn't making optimal use of the
-  instruction set in what seemed like an obvious chunk of code.  Since
-  it's only a few short instructions, this loop is also "unrolled" --
-  each iteration is stated explicitly, not through a control loop.
-Written by Limor Fried/Ladyada & Phil Burgess/PaintYourDragon for
-Adafruit Industries.
-BSD license, all text above must be included in any redistribution.
-*/
+/*!
+ * @file DFRobot_RGBMatrix.cpp
+ * @brief RGB矩阵灯板类函数的实现
+ * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @license     The MIT License (MIT)
+ * @author [TangJie]](jie.tang@dfrobot.com)
+ * @version  V1.0.1
+ * @date  2022-03-23
+ * @url https://github.com/DFRobot/DFRobot_RGBMatrix
+ */
 #include <DFRobot_RGBMatrix.h>
-#include <gamma.h>
+#include "gamma.h"
 
 #ifndef _swap_int16_t
 #define _swap_int16_t(a, b) { int16_t t = a; a = b; b = t; }
@@ -126,15 +109,15 @@ void DFRobot_RGBMatrix::FM6126_Init(void)
   pinMode(28,OUTPUT); //G2
   pinMode(29,OUTPUT); //B2
   
-  int   REG1=0xFFC2;
-  int REG2_R=0x6862;
-  int REG2_G=0x6862;
-  int REG2_B=0x6862;
+//   int   REG1=0xFFC2;
+//   int REG2_R=0x6862;
+//   int REG2_G=0x6862;
+//   int REG2_B=0x6862;
   Write_REG1(24,25,26,27,28,29,0xFFC2);
   Write_REG2(24,25,26,27,28,29,0x6862);
 }
 
-void DFRobot_RGBMatrix::Write_REG1(int A,int B,int C,int D,int E,int F,unsigned char REG_DATA)
+void DFRobot_RGBMatrix::Write_REG1(int A,int B,int C,int D,int E,int F,uint16_t REG_DATA)
 {
   digitalWrite(CLK, LOW);
   digitalWrite(LAT, LOW);
@@ -227,7 +210,7 @@ void DFRobot_RGBMatrix::Write_REG1(int A,int B,int C,int D,int E,int F,unsigned 
   digitalWrite(LAT, LOW); 
 }
 
-void DFRobot_RGBMatrix::Write_REG2(int A,int B,int C,int D,int E,int F,unsigned char REG_DATA)
+void DFRobot_RGBMatrix::Write_REG2(int A,int B,int C,int D,int E,int F,uint16_t REG_DATA)
 {
   digitalWrite(CLK, LOW);
   digitalWrite(LAT, LOW);
@@ -420,8 +403,7 @@ uint16_t DFRobot_RGBMatrix::Color888(uint8_t r, uint8_t g, uint8_t b)
 }
 
 // 8/8/8 -> gamma -> 5/6/5
-uint16_t DFRobot_RGBMatrix::Color888(
-     uint8_t r, uint8_t g, uint8_t b, boolean gflag)
+uint16_t DFRobot_RGBMatrix::Color888(uint8_t r, uint8_t g, uint8_t b, boolean gflag)
 {
 	if(gflag) { // Gamma-corrected color?
 		r = pgm_read_byte(&gamma[r]); // Gamma correction table maps
@@ -434,8 +416,7 @@ uint16_t DFRobot_RGBMatrix::Color888(
 	return ((uint16_t)(r & 0xF8) << 8) | ((uint16_t)(g & 0xFC) << 3) | (b >> 3);
 }
 
-uint16_t DFRobot_RGBMatrix::ColorHSV(
-     long hue, uint8_t sat, uint8_t val, boolean gflag)
+uint16_t DFRobot_RGBMatrix::ColorHSV(long hue, uint8_t sat, uint8_t val, boolean gflag)
 {
 
 	uint8_t  r, g, b, lo;
@@ -519,7 +500,7 @@ void DFRobot_RGBMatrix::customizeZH(const uint8_t *arr, uint8_t fontSize, uint8_
 		arr_sum = 32;
 	}
 
-	for (int i = 0; i < arr_sum; i++) {
+	for (uint16_t i = 0; i < arr_sum; i++) {
 
 		bit = 0x01;
 		if(shift_y == 2) {

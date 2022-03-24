@@ -6,24 +6,25 @@
 
 ![Product Image](./resources/images/DFR0499.png)
 
-## Product Link (https://www.dfrobot.com/product-1833.html)
+## 产品链接 (https://www.dfrobot.com.cn/goods-1504.html)
+
     SKU: DFR0499
 
-  - [Summary](#summary)
-  - [Installation](#installation)
-  - [Methods](#methods)
-  - [Compatibility](#compatibility)
-  - [History](#history)
-  - [Credits](#credits)
+## 目录
+  - [概述](#概述)
+  - [库安装](#库安装)
+  - [方法](#方法)
+  - [兼容性](#兼容性)
+  - [版本](#版本)
+  - [创作者](#创作者)
 
-## Summary
+## 概述
 这是一个Arduino IDE库，简化RGB灯板的使用，方便使用控制RGB灯板。
 
-## Installation
+## 库安装
 
-To use this library, please download the library file first and paste it into the \Arduino\libraries directory, then open the examples folder and run the demo in the folder.
-
-## Methods
+使用此库前，请首先下载库文件，将其粘贴到\Arduino\libraries目录中，然后打开examples文件夹并在该文件夹中运行演示。
+## 方法
 
 ```C++
   /**
@@ -140,21 +141,19 @@ To use this library, please download the library file first and paste it into th
    * @return None
    */
   void updateDisplay(void);
-  
 ```
 
-## Compatibility
+## 兼容性
 
 MCU                | Work Well    | Work Wrong   | Untested    | Remarks
 ------------------ | :----------: | :----------: | :---------: | -----
 Mega2560           |      √       |              |             | 
+## 版本
 
-## History
+- 2017/03/22 - V1.0.0版本
+- 2022/03/23 - V1.0.1版本
 
-- 2017/03/22 Version V1.0.0 released.
-- 2022/03/23 Version V1.0.1 released.
-
-## Credits
+## 创作者
 
 Written by Tangjie (jie.tang@dfrobot.com), 2022. (Welcome to our [website](https://www.dfrobot.com/))
 

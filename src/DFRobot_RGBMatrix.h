@@ -1,31 +1,33 @@
-# DFRobot_RGBMatrix
+/*!
+ * @file DFRobot_RGBMatrix.h
+ * @brief RGB矩阵灯板类函数定义
+ * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @license     The MIT License (MIT)
+ * @author [TangJie]](jie.tang@dfrobot.com)
+ * @version  V1.0.1
+ * @date  2022-03-23
+ * @url https://github.com/DFRobot/DFRobot_RGBMatrix
+ */
 
-* [中文版](./README_CN.md)
-  
-这是一个Arduino IDE库，简化RGB灯板的使用，方便使用控制RGB灯板。
+#if ARDUINO >= 100
+ #include <Arduino.h>
+#else
+ #include <WProgram.h>
+ #include <pins_arduino.h>
+#endif
+#include "Adafruit_GFX.h"
 
-![Product Image](./resources/images/DFR0499.png)
+class DFRobot_RGBMatrix : public Adafruit_GFX {
 
-## Product Link (https://www.dfrobot.com/product-1833.html)
-    SKU: DFR0499
+ public:
+ 
+  /**
+   * @fn DFRobot_RGBMatrix
+   *  @brief Constructor
+   */ 
+  DFRobot_RGBMatrix(uint8_t a, uint8_t b, uint8_t c, uint8_t d, uint8_t e,
+    uint8_t sclk, uint8_t latch, uint8_t oe, boolean dbuf, uint8_t width, uint8_t high);
 
-  - [Summary](#summary)
-  - [Installation](#installation)
-  - [Methods](#methods)
-  - [Compatibility](#compatibility)
-  - [History](#history)
-  - [Credits](#credits)
-
-## Summary
-这是一个Arduino IDE库，简化RGB灯板的使用，方便使用控制RGB灯板。
-
-## Installation
-
-To use this library, please download the library file first and paste it into the \Arduino\libraries directory, then open the examples folder and run the demo in the folder.
-
-## Methods
-
-```C++
   /**
    * @fn customizeZH
    * @brief Chinese character display
@@ -140,25 +142,28 @@ To use this library, please download the library file first and paste it into th
    * @return None
    */
   void updateDisplay(void);
+
+ private:
+
+  uint8_t         	*matrixbuff[2];
+  uint8_t          	nRows;
+  int16_t 		   	_width, _high;
+  volatile uint8_t 	backindex;
+  volatile boolean 	swapflag;
+
+  // PORT register pointers, pin bitmasks, pin numbers:
+  volatile uint8_t
+    *latport, *oeport, *addraport, *addrbport, *addrcport, *addrdport, *addreport;
+  uint8_t
+    sclkpin, latpin, oepin, addrapin, addrbpin, addrcpin, addrdpin, addrepin,
+    _sclk, _latch, _oe, _a, _b, _c, _d, _e;
+
+  // Counters/pointers for interrupt handler:
+  volatile uint8_t row, plane;
+  volatile uint8_t *buffptr;
+  void FM6126_Init();
+  void Write_REG1(int A,int B,int C,int D,int E,int F,uint16_t REG_DATA);
+  void Write_REG2(int A,int B,int C,int D,int E,int F,uint16_t REG_DATA);
   
-```
-
-## Compatibility
-
-MCU                | Work Well    | Work Wrong   | Untested    | Remarks
------------------- | :----------: | :----------: | :---------: | -----
-Mega2560           |      √       |              |             | 
-
-## History
-
-- 2017/03/22 Version V1.0.0 released.
-- 2022/03/23 Version V1.0.1 released.
-
-## Credits
-
-Written by Tangjie (jie.tang@dfrobot.com), 2022. (Welcome to our [website](https://www.dfrobot.com/))
-
-
-
-
+};
 

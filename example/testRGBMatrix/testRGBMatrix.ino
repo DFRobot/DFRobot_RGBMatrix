@@ -1,15 +1,14 @@
-// By Marc MERLIN <marc_soft@merlins.org>
-// Contains code (c) Adafruit, license BSD
-// BSD license, all text above must be included in any redistribution.
 /*!
  * @file testRGBMatrix.ino
- * @brief DFRobot's RGB Matrix
- * @n High Accuracy Ambient Light Sensor
- *
- * @version  V1.0
- * @date  2017-3-22
+ * @brief 运行例程，测试RGB灯板功能
+ * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @license     The MIT License (MIT)
+ * @author [TangJie]](jie.tang@dfrobot.com)
+ * @version  V1.0.1
+ * @date  2022-03-23
+ * @url https://github.com/DFRobot/DFRobot_RGBMatrix
  */
-
+ 
 #include <DFRobot_RGBMatrix.h> // Hardware-specific library
 
 #define OE   	9
@@ -21,9 +20,9 @@
 #define D   	A3
 #define E   	A4
 #define WIDTH 64
-#define HIGH	64
+#define _HIGH	64
 
-DFRobot_RGBMatrix matrix(A, B, C, D, E, CLK, LAT, OE, false, WIDTH, HIGH);
+DFRobot_RGBMatrix matrix(A, B, C, D, E, CLK, LAT, OE, false, WIDTH, _HIGH);
 
 void setup() {
 
