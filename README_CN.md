@@ -1,6 +1,6 @@
 # DFRobot_RGBMatrix
 
-* [中文版](./README_CN.md)
+* [English Version](./README.md)
   
 这是一个Arduino IDE库，简化RGB灯板的使用，方便使用控制RGB灯板。
 

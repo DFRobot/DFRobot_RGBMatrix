@@ -8,7 +8,8 @@
 
 ## Product Link (https://www.dfrobot.com/product-1833.html)
     SKU: DFR0499
-
+    
+## Table of Contents
   - [Summary](#summary)
   - [Installation](#installation)
   - [Methods](#methods)
