@@ -1,3 +1,13 @@
+/*!
+ * @file gamma.cpp
+ * @brief standard ascii 5x7 font
+ * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @license     The MIT License (MIT)
+ * @author [TangJie]](jie.tang@dfrobot.com)
+ * @version  V1.0.1
+ * @date  2022-03-23
+ * @url https://github.com/DFRobot/DFRobot_RGBMatrix
+ */
 #if !defined(ARDUINO_ARCH_SAM) && !defined(__ARDUINO_ARC__)
 #include <avr/io.h>
 #endif

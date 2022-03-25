@@ -29,12 +29,12 @@
 ```C++
   /**
    * @fn customizeZH
-   * @brief Chinese character display
-   * @param arr Display contents
-   * @param fontSize font size (only 16,32 and 64 three options)
-   * @param x x-axis
-   * @param y  y-axis
-   * @param color  color
+   * @brief 汉字显示输出
+   * @param arr 显示控制
+   * @param fontSize 字体大小(只有16、32和64三个选项)  
+   * @param x x轴
+   * @param y  y轴
+   * @param color  颜色
    */ 	
   void customizeZH(const uint8_t *arr, uint8_t fontSize, uint8_t x, uint8_t y, uint16_t color);
 

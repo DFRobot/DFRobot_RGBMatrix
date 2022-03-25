@@ -1,6 +1,27 @@
 /*!
  * @file DFRobot_RGBMatrix.h
  * @brief RGB矩阵灯板类函数定义
+ * @n This version uses a few tricks to achieve better performance and/or
+ * @n lower CPU utilization:
+ * @n To control LED brightness, traditional PWM is eschewed in favor of
+ * @n Binary Code Modulation, which operates through a succession of periods
+ * @n each twice the length of the preceeding one (rather than a direct
+ * @n linear count a la PWM).  It's explained well here:
+ * @n   http://www.batsocks.co.uk/readme/art_bcm_1.htm
+ * @n I was initially skeptical, but it works exceedingly well in practice!
+ * @n And this uses considerably fewer CPU cycles than software PWM.
+ * @n Although many control pins are software-configurable in the user's
+ * @n code, a couple things are tied to specific PORT registers.  It's just
+ * @n a lot faster this way -- port lookups take time.  Please see the notes
+ * @n later regarding wiring on "alternative" Arduino boards.
+ * @n A tiny bit of inline assembly language is used in the most speed-
+ * @n critical section.  The C++ compiler wasn't making optimal use of the
+ * @n instruction set in what seemed like an obvious chunk of code.  Since
+ * @n it's only a few short instructions, this loop is also "unrolled" --
+ * @n each iteration is stated explicitly, not through a control loop.
+ * @n Written by Limor Fried/Ladyada & Phil Burgess/PaintYourDragon for
+ * @n Adafruit Industries.
+ * @n BSD license, all text above must be included in any redistribution.
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author [TangJie]](jie.tang@dfrobot.com)

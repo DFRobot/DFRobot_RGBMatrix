@@ -1,3 +1,13 @@
+/*!
+ * @file gamma.h
+ * @brief 伽马校正颜色
+ * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @license     The MIT License (MIT)
+ * @author [TangJie]](jie.tang@dfrobot.com)
+ * @version  V1.0.1
+ * @date  2022-03-23
+ * @url https://github.com/DFRobot/DFRobot_RGBMatrix
+ */
 #ifndef _GAMMA_H_
 #define _GAMMA_H_
 
