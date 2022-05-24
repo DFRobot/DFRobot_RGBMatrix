@@ -1,6 +1,6 @@
 /*!
  * @file gamma.h
- * @brief 伽马校正颜色
+ * @brief Gamma color correction
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author [TangJie]](jie.tang@dfrobot.com)

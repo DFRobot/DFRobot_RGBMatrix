@@ -1,6 +1,6 @@
 /*!
  * @file DFRobot_RGBMatrix.cpp
- * @brief RGB矩阵灯板类函数的实现
+ * @brief Implementation of the RGB LED Matrix Panel class function
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author [TangJie]](jie.tang@dfrobot.com)

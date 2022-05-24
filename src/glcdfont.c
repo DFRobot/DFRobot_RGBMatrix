@@ -1,5 +1,5 @@
 /*!
- * @file gamma.cpp
+ * @file glcdfont.c
  * @brief standard ascii 5x7 font
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)

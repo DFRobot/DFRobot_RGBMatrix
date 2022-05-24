@@ -1,6 +1,6 @@
 /*!
  * @file customizeZH.ino
- * @brief 运行例程，RGB灯板显示中文
+ * @brief Run the routine, the RGB LED Matrix Panel display Chinese
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author [TangJie]](jie.tang@dfrobot.com)

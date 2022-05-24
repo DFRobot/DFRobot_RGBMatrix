@@ -1,6 +1,6 @@
 /*!
  * @file testRGBMatrix.ino
- * @brief 运行例程，测试RGB灯板功能
+ * @brief Run the routine to test the RGB LED Matrix Panel
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author [TangJie]](jie.tang@dfrobot.com)

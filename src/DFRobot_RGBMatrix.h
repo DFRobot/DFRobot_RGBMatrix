@@ -1,6 +1,6 @@
 /*!
  * @file DFRobot_RGBMatrix.h
- * @brief RGB矩阵灯板类函数定义
+ * @brief Definition of the RGB LED Matrix Panel class function
  * @n This version uses a few tricks to achieve better performance and/or
  * @n lower CPU utilization:
  * @n To control LED brightness, traditional PWM is eschewed in favor of
@@ -69,17 +69,17 @@ class DFRobot_RGBMatrix : public Adafruit_GFX {
 	
   /**
    * @fn drawPixel
-   * @brief 像素点绘制
-   * @param x 像素X坐标
-   * @param y 像素Y坐标
-   * @param c 像素颜色
+   * @brief Draw pixel
+   * @param x pixel X-coordinate
+   * @param y pixel Y-coordinate
+   * @param c pixel color
    */ 
   void drawPixel(int16_t x, int16_t y, uint16_t c);
 
   /**
    * @fn fillScreen
-   * @brief 屏幕颜色填充
-   * @param c 填充得颜色
+   * @brief Fill the screen with a color
+   * @param c the color filled in the screen
    * @return None 
    */
   void fillScreen(uint16_t c);
@@ -93,7 +93,7 @@ class DFRobot_RGBMatrix : public Adafruit_GFX {
 
   /**
    * @fn dumpMatrix
-   * @brief 将显示的数据转到串口数据
+   * @brief Dump the displayed data into the serial port
    * @return None
    */
   void dumpMatrix(void);
@@ -107,59 +107,59 @@ class DFRobot_RGBMatrix : public Adafruit_GFX {
 
   /**
    * @fn Color333
-   * @brief 将RGB333转换为RGB565
-   * @param r 红色
-   * @param g 绿色
-   * @param b 蓝色
-   * @return 返回转换后颜色
+   * @brief Convert RGB333 to RGB565
+   * @param r red
+   * @param g green
+   * @param b blue
+   * @return Return the converted color
    */
   uint16_t  Color333(uint8_t r, uint8_t g, uint8_t b);
 
   /**
    * @fn Color444
-   * @brief 将RGB444转换为RGB565
-   * @param r 红色
-   * @param g 绿色
-   * @param b 蓝色
-   * @return 返回转换后颜色
+   * @brief Convert RGB444 to RGB565
+   * @param r red
+   * @param g green
+   * @param b blue
+   * @return Return the converted color
    */
   uint16_t  Color444(uint8_t r, uint8_t g, uint8_t b);
 
   /**
    * @fn Color888
-   * @brief 将RGB888转换为RGB565
-   * @param r 红色
-   * @param g 绿色
-   * @param b 蓝色
-   * @return 返回转换后颜色
+   * @brief Convert RGB888 to RGB565
+   * @param r red
+   * @param g green
+   * @param b blue
+   * @return Return the converted color
    */
   uint16_t  Color888(uint8_t r, uint8_t g, uint8_t b);
 
   /**
    * @fn Color888
-   * @brief 将RGB888转换为RGB565
-   * @param r 红色
-   * @param g 绿色
-   * @param b 蓝色
-   * @param gflag 是否颜色矫正
-   * @return 返回转换后颜色
+   * @brief Convert RGB888 to RGB565
+   * @param r red
+   * @param g green
+   * @param b blue
+   * @param gflag whether to correct the color
+   * @return Return the converted color
    */
   uint16_t  Color888(uint8_t r, uint8_t g, uint8_t b, boolean gflag);
 
   /**
    * @fn ColorHSV
-   * @brief 设置颜色饱和度
-   * @param hue 色调
-   * @param sat 饱和度
-   * @param val 亮度值
-   * @param gflag 是否颜色矫正
-   * @return 返回转换后颜色
+   * @brief Set color saturation
+   * @param hue hue
+   * @param sat saturation
+   * @param val value
+   * @param gflag whether to correct the color
+   * @return Return the converted color
    */
   uint16_t  ColorHSV(long hue, uint8_t sat, uint8_t val, boolean gflag);
 
   /**
    * @fn updateDisplay
-   * @brief 显示计算
+   * @brief Display update
    * @return None
    */
   void updateDisplay(void);
